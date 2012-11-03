@@ -13,6 +13,7 @@ xcuserdata
 profile
 *.moved-aside
 ios/Pods
+ios/Podfile.lock
 
 # Node
 node_modules
