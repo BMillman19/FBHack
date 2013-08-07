@@ -4,7 +4,7 @@ FBHack.Views.StreamView = Backbone.View.extend({
   qrTemplate: FBHack.getTemplate('qr'),
   model: FBHack.Collections.StreamCollection,
   initialize: function () {
-    this.model.on('add', this.render, this);
+    this.model.on('add', this.renderAdd, this);
   },
   events: {
     'click #qrlink': 'showQR',
@@ -29,6 +29,10 @@ FBHack.Views.StreamView = Backbone.View.extend({
   },
   fetchNext: function () {
     this.model.fetchNext();
+  },
+  renderAdd: function () {
+    this.render();
+    $('#main').scrollLeft(FBHack.router.view.model.maxPos);
   },
   render: function () {
     this.$el.find('#stream_container').html(this.template({
